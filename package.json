@@ -1,1 +1,34 @@
-{}
+{
+  "name": "log",
+  "description": "readme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inorle/log.git"
+  },
+  "author": "Elinor Weissberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inorle/log/issues"
+  },
+  "homepage": "https://github.com/inorle/log#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.2.4",
+    "react": "^18.2.0",
+    "redux": "^4.2.1",
+    "webpack": "^5.86.0"
+  }
+}
