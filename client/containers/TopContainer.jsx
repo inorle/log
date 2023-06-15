@@ -1,9 +1,9 @@
 import React from 'react';
 import BookCreator from '../components/BookCreator.jsx'
 
-const TopContainer = () => {
+const TopContainer = ({newBookSet}) => {
     return (<div>
-       <BookCreator />
+        <BookCreator newBookSet={newBookSet}/>
     </div>)
 }
 

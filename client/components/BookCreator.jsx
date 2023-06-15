@@ -2,7 +2,7 @@
 import React, { useEffect, useState }  from 'react';
 
 
-const BookCreator = () => {
+const BookCreator = ({newBookSet}) => {
     const [book, setBook] = useState('');
     const SendData = (object) => {
         console.log('THE OBJECT', object);
@@ -47,6 +47,7 @@ const BookCreator = () => {
         })
             .then((response) => response.json())
             .then((Data) => getData(Data.items[0].id))
+            .then((Data) => newBookSet(book))
             .catch((err) => {
                 console.log(err.message);
               });
@@ -58,9 +59,9 @@ const BookCreator = () => {
     return(
         <div id="SearchandButtons">
             <label>
-                Book Title : <input onChange={AddedText} name='Title'/>
+                I Just Read: <input onChange={AddedText} placeholder="title" name='Title'/>
             </label>
-            <button onClick={OnChange}> Add Book </button>
+            <button onClick={OnChange} style={{ fontWeight: 'bold' }}> Add Book </button> 
         </div>
     )
 };

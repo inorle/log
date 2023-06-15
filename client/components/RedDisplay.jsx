@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import React from "react";
 import ImageComponent from "./ImageComponent.jsx";
 
-const RedDisplay = () => {
+const RedDisplay = ({newBook}) => {
     const [images, setImage] = useState([])
     console.log(images);
-    const FetchRead = () => {
+    useEffect(() => {
         fetch('/library')
         .then(result => result.json())
-            .then(data => {
-                const newArray = [...images];
-                for (let i in data) {
-                    if (!newArray.includes(data[i]['thumbnail'])) {
-                        newArray.push(data[i]['thumbnail']);
-                    }
+        .then(data => {
+            const newArray = [...images];
+            for (let i in data) {
+                if (!newArray.includes(data[i]['thumbnail'])) {
+                    newArray.push(data[i]['thumbnail']);
                 }
-                setImage(newArray);
-            })
+            }
+            setImage(newArray);
+        })
         .catch(err => console.log(err));
-    }
+    }, [newBook]);      
     const array = [];
     for (let i in images) {
         array.push(<ImageComponent image={images[i]} />);
@@ -26,9 +26,6 @@ const RedDisplay = () => {
 
     return (
         <div>
-            books you have read:
-            <button onClick={FetchRead}> Read </button>
-            <button > To Read </button>
             <div className="RedDisplay">
                 {array}
             </div >
