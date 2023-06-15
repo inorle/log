@@ -11,23 +11,28 @@ const port = 3000;
 // Access - Control - Allow - Origin: *;
 // s
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://localhost:8080");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  });
+
+app.use('/build', express.static(path.join(__dirname, "../build")))
+
+
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "https://localhost:8080");
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+//   });
 
   
 // app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.post('/addBook', bookcontroller.createBook, (req, res) => {
     console.log('res.locals from server', res.locals.book);
-    res.status(200).send(res.locals.book);
-})
+    return res.status(200).send(res.locals.book);
+});
 app.get('/', (req, res) => {
     res.status(200).send('hello')
 });

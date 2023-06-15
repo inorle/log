@@ -26,20 +26,19 @@ module.exports = {
         ],
     },
     devServer: {
-     
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        },
+        port: 8080,
+        // headers: {
+        //     "Access-Control-Allow-Origin": "*",
+        //     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        //     "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+        // },
     
         // static: {
         //     directory: path.join(__dirname, 'build'),
         //     publicPath: '/localhost:8080'
         // },
         proxy: {
-            context: ['/api'],
-            target: 'http://localhost:3000'
+            '/': 'http://localhost:3000'
         }
     },
     }

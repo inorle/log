@@ -1,24 +1,23 @@
 
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 
 
 const BookCreator = () => {
-    // const [book, updateBook] = setState();
+    const [book, setBook] = useState('');
     const SendData = (object) => {
         console.log('THE OBJECT', object);
-        const newBody = JSON.stringify({"thisString": 2});
-        fetch('http://localhost:3000/addBook', {
+        // const newBody = JSON.stringify({thisString: 2});
+        fetch('/addBook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-              },
-            body: newBody,
-            mode: 'no-cors'
+            },
+            body: JSON.stringify(object),
         }
         )
             .then(res => console.log('RESULT', res))
             .catch(error => console.log(error));
-    }
+    };
     const getData = (key) => {
         const url = 'https://www.googleapis.com/books/v1/volumes/'+key+'?key=AIzaSyDXhGcVM6su0efQc-Lu398M64Ud1JtNOQA'
         fetch(url, { method: 'GET' })
@@ -28,9 +27,21 @@ const BookCreator = () => {
                 console.log(err.message);
               });
     }
+    const RemoveSpaces = (string) => {
+        let newString = '';
+        for (let i in string) {
+            if (string[i] != ' ') {
+                newString += string[i];
+            }
+            else {
+                newString+= '+'
+            }
+        }
+        return newString;
+    }
     const OnChange = () => {
-        const bookTitle = "normal+people"
-        const url = 'https://www.googleapis.com/books/v1/volumes?q=' + bookTitle + '&key=AIzaSyDXhGcVM6su0efQc-Lu398M64Ud1JtNOQA';
+        const title = RemoveSpaces(book);
+        const url = 'https://www.googleapis.com/books/v1/volumes?q=' + title + '&key=AIzaSyDXhGcVM6su0efQc-Lu398M64Ud1JtNOQA';
         fetch(url, {
             method: 'GET',
         })
@@ -40,14 +51,14 @@ const BookCreator = () => {
                 console.log(err.message);
               });
     }
+    const AddedText = (e) => {
+        setBook(e.target.value);
+    }
 
     return(
         <div id="SearchandButtons">
             <label>
-                Book Title : <input name='Title'/>
-            </label>
-            <label>
-                Author : <input name='Author'/>
+                Book Title : <input onChange={AddedText} name='Title'/>
             </label>
             <button onClick={OnChange}> Add Book </button>
         </div>
