@@ -2,8 +2,9 @@
 import React, { useEffect, useState }  from 'react';
 
 
-const BookCreator = ({newBookSet}) => {
+const BookCreator = ({newBookSet, deleteAllSet, deleteAll}) => {
     const [book, setBook] = useState('');
+    const [inputState, setInputState] = useState('');
     const SendData = (object) => {
         // console.log('THE OBJECT', object);
         // const newBody = JSON.stringify({thisString: 2});
@@ -45,21 +46,30 @@ const BookCreator = ({newBookSet}) => {
             method: 'GET',
         })
             .then((response) => response.json())
-            .then((Data) => getData(Data.items[0].id))
+            .then((Data) => {
+                getData(Data.items[0].id);
+                setInputState('');
+            })
             .catch((err) => {
                 console.log(err.message);
               });
     }
     const AddedText = (e) => {
+        setInputState(e.target.value);
         setBook(e.target.value);
+    }
+    const onChangeDelete = () => {
+        deleteAllSet('true');
+        console.log(deleteAll);
     }
 
     return(
         <div id="SearchandButtons">
             <label>
-                I Just Read: <input onChange={AddedText} placeholder="title" name='Title'/>
+                I Just Read: <input onChange={AddedText} placeholder="title" value={inputState} name='Title'/>
             </label>
             <button id="AddBookbutton" onClick={OnChange} style={{ fontWeight: 'bold' }}> Add Book </button> 
+            <button id="DeleteBooksbutton" onClick={onChangeDelete} style={{ fontWeight: 'bold' }}> Delete Books </button> 
         </div>
     )
 };

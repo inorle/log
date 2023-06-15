@@ -13,6 +13,7 @@ body {
 } */
 #SearchandButtons{
     display: flex;
+    margin-bottom: 30px;
     justify-content: center;
     font-size: 40pt;
     font-family: Helvetica, sans-serif;
