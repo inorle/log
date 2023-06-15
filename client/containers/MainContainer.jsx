@@ -8,7 +8,7 @@ const MainContainer = () => {
     const [newBook, newBookSet] = useState([])
     return (
         <div> <TopContainer newBookSet = {newBookSet} /> 
-            <RedDisplay newBook={newBook} />
+            <RedDisplay newBook={newBook} newBookSet = {newBookSet} />
         </div>
     )
 }

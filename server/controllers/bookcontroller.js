@@ -24,7 +24,6 @@ bookcontroller.createBook = async (req, res, next) => {
 bookcontroller.getAllBooks = async (req, res, next) => {
     try {
         const result = await Library.find({}, "thumbnail");
-        console.log(result);
         res.locals.library = result;
         return next();
     }
@@ -32,7 +31,21 @@ bookcontroller.getAllBooks = async (req, res, next) => {
         console.log('cannnot find all')
         return next(err);
     }
-
+}
+bookcontroller.deleteBook = async (req, res, next) => {
+    console.log(req.body)
+    const thumbnail = req.body.thumbnail;
+    console.log(thumbnail);
+    try {
+        const result = await Library.deleteOne({ thumbnail })
+        res.locals.book = result;
+        console.log(result);
+        next();
+    }
+    catch (err) {
+        console.log('cannnot find all')
+        return next(err);
+    }
 }
 
 module.exports = bookcontroller;

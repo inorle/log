@@ -8,6 +8,9 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+/* .DeleteButton{
+    height: 10px;
+} */
 #SearchandButtons{
     display: flex;
     justify-content: center;
@@ -40,7 +43,7 @@ input{
     padding-left: 5pt;
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
 }
-button{
+#AddBookbutton {
     margin-left: 7.5pt;
     align-self: center;
     display: flex;

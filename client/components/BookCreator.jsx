@@ -5,7 +5,7 @@ import React, { useEffect, useState }  from 'react';
 const BookCreator = ({newBookSet}) => {
     const [book, setBook] = useState('');
     const SendData = (object) => {
-        console.log('THE OBJECT', object);
+        // console.log('THE OBJECT', object);
         // const newBody = JSON.stringify({thisString: 2});
         fetch('/addBook', {
             method: 'POST',
@@ -13,9 +13,8 @@ const BookCreator = ({newBookSet}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(object),
-        }
-        )
-            .then(res => console.log('RESULT', res))
+        })
+            .then(() => newBookSet(book))
             .catch(error => console.log(error));
     };
     const getData = (key) => {
@@ -47,7 +46,6 @@ const BookCreator = ({newBookSet}) => {
         })
             .then((response) => response.json())
             .then((Data) => getData(Data.items[0].id))
-            .then((Data) => newBookSet(book))
             .catch((err) => {
                 console.log(err.message);
               });
@@ -61,7 +59,7 @@ const BookCreator = ({newBookSet}) => {
             <label>
                 I Just Read: <input onChange={AddedText} placeholder="title" name='Title'/>
             </label>
-            <button onClick={OnChange} style={{ fontWeight: 'bold' }}> Add Book </button> 
+            <button id="AddBookbutton" onClick={OnChange} style={{ fontWeight: 'bold' }}> Add Book </button> 
         </div>
     )
 };

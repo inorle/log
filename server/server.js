@@ -18,6 +18,10 @@ app.post('/addBook', bookcontroller.createBook, (req, res) => {
     console.log('res.locals from server', res.locals.book);
     return res.status(200).send(res.locals.book);
 });
+app.post('/deleteBook', bookcontroller.deleteBook, (req, res) => {
+    console.log('DELETED THE BOOK');
+    return res.status(200).send(res.locals.book);
+})
 app.get('/library', bookcontroller.getAllBooks, (req, res) => {
     res.status(200).send(res.locals.library);
 });
