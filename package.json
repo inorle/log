@@ -7,7 +7,7 @@
     "test": "start",
     "start": "node server/server.js",
     "build": "webpack",
-    "dev": "webpack serve & --open node server/server.js"
+    "dev": "webpack serve & node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +29,14 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "batch": "^0.6.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.2.4",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.0",
     "redux": "^4.2.1",
     "webpack": "^5.86.0"
   }
