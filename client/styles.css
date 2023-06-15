@@ -1,7 +1,25 @@
 body {
     background: rgb(209,233,226);
-    background: linear-gradient(90deg, rgba(209,233,226,1) 0%, rgba(220,225,222,1) 14%, rgba(231,217,217,1) 48%, rgba(218,218,211,1) 79%, rgba(206,219,205,1) 100%);
+background: linear-gradient(90deg, rgba(209,233,226,1) 0%, rgba(221,228,224,1) 26%, rgba(242,236,216,1) 48%, rgba(223,214,205,1) 79%, rgba(219,205,205,1) 100%);
 }
+
+.DeleteButton:hover{
+    background-color: rgb(199, 199, 199); ;
+}
+.DeleteButton{
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    justify-content: center;
+    align-items: space-between;
+    border-radius: 20%;
+    background-color: rgb(255, 255, 255);
+    color:rgb(212, 85, 85);
+    border: none;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
+
+}
+
 .RedDisplay{
     display: flex;
     direction: row;
@@ -16,14 +34,14 @@ body {
     margin-bottom: 30px;
     justify-content: center;
     font-size: 40pt;
-    font-family: Helvetica, sans-serif;
     font-weight: bold;
-    color: #343333
+    color: #343333;
+    font-family: 'Helvetica';
 
 }
 .BookImage{
     margin: 8pt;
-    padding: 8pt;
+    padding: 3pt;
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
     max-width: 200px;
     background-color: rgb(241, 241, 241);
@@ -33,16 +51,20 @@ h2{
     justify-content: center;
     font-family: 'Bagel Fat One', cursive;
     font-size: 100px;
-    color: green
+    color: green;
+    text-shadow: 8px 8px #fdfff0;
 }
 input{
-    width: 500px;
-    height: 60px;
+    width: 600px;
+    height: 70px;
     font-size: 50px;
     border: solid green;
     border-radius: 2%;
     padding-left: 5pt;
     box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
+}
+#AddBookbutton:hover{
+    background-color: rgb(9, 83, 9);
 }
 #AddBookbutton {
     margin-left: 7.5pt;
@@ -59,4 +81,26 @@ input{
     border: solid white;
     font-weight: bold;
     font-family: Helvetica, sans-serif;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
 }
+#DeleteBooksbutton:hover{
+ background-color:  rgb(223, 221, 221);
+}
+#DeleteBooksbutton{
+    margin-left: 7.5pt;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 15pt;
+    height: 70px;
+    width: 90px;
+    border-radius: 18%;
+    background-color: rgb(245, 245, 245);
+    color: green;
+    border: solid green;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.1);
+}
+

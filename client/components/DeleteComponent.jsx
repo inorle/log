@@ -14,7 +14,7 @@ const DeleteComponent = ({link, newBookSet}) => {
             .catch(error => console.log(error));
         }
     return (
-        <button onClick={Delete}> x </button>
+        <button class= "DeleteButton" onClick={Delete}> x </button>
     )
 }
 

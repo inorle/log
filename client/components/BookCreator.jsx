@@ -25,7 +25,7 @@ const BookCreator = ({newBookSet, deleteAllSet, deleteAll}) => {
             .then(data => SendData({ authors: data.volumeInfo.authors[0], title: data.volumeInfo.title, thumbnail: data.volumeInfo.imageLinks.large }))
             .catch((err) => {
                 console.log(err.message);
-              });
+            });
     }
     const RemoveSpaces = (string) => {
         let newString = '';
@@ -59,14 +59,19 @@ const BookCreator = ({newBookSet, deleteAllSet, deleteAll}) => {
         setBook(e.target.value);
     }
     const onChangeDelete = () => {
-        deleteAllSet('true');
+        if (deleteAll == 'false') {
+            deleteAllSet('true');
+        }
+        else {
+            deleteAllSet('false');
+        }
         console.log(deleteAll);
     }
 
     return(
         <div id="SearchandButtons">
             <label>
-                I Just Read: <input onChange={AddedText} placeholder="title" value={inputState} name='Title'/>
+                Just Read: <input onChange={AddedText} placeholder="title" value={inputState} name='Title'/>
             </label>
             <button id="AddBookbutton" onClick={OnChange} style={{ fontWeight: 'bold' }}> Add Book </button> 
             <button id="DeleteBooksbutton" onClick={onChangeDelete} style={{ fontWeight: 'bold' }}> Delete Books </button> 

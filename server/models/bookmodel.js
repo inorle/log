@@ -17,7 +17,7 @@ const Schema = mongoose.Schema;
 const librarySchema = new Schema({
   title: String,
   authors: String,
-  thumbnail: String,
+  thumbnail: { type: String, default: 'https://www.pngarts.com/files/8/Blank-Book-Cover-PNG-Picture.png'},
 });
 
 const Library = mongoose.model('library', librarySchema);
