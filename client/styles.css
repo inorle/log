@@ -39,6 +39,10 @@ background: linear-gradient(90deg, rgba(209,233,226,1) 0%, rgba(221,228,224,1) 2
     font-family: 'Helvetica';
 
 }
+.BookImage:hover{
+   background-color: green;
+
+}
 .BookImage{
     margin: 8pt;
     padding: 3pt;
