@@ -1,25 +1,18 @@
 const path = require('path');
 const express = require('express');
-// const cors = require('cors')
+const cors = require('cors')
 
 //import database
 const bookcontroller = require('./controllers/bookcontroller')
-const userController = require('./controllers/signincontroller')
 const app = express();
 const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "http://localhost:8080" }));
 
 
 app.use('/build', express.static(path.join(__dirname, "../build")))
 
-// app.use(express.static(path.resolve(__dirname, '../build')));
-app.get('/login',  (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/login.html'));
-});
-app.post('/login', userController.verifyUser, (req, res) => {
-    res.redirect('/');
-});
   
 app.post('/addBook', bookcontroller.createBook, (req, res) => {
     console.log('res.locals from server', res.locals.book);
@@ -32,5 +25,17 @@ app.post('/deleteBook', bookcontroller.deleteBook, (req, res) => {
 app.get('/library', bookcontroller.getAllBooks, (req, res) => {
     res.status(200).send(res.locals.library);
 });
+
+app.use((err, req, res, next) => {
+    let defaultErr = {
+        log: 'Express error handler caught unknown middleware error',
+        status: 400,
+        message: { err: 'An error occurred' },
+    }
+    let errorObj = Object.assign(defaultErr, err)
+    console.log(errorObj)
+    return res.sendStatus(500)
+})
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
