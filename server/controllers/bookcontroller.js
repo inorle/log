@@ -5,12 +5,12 @@ const bookcontroller = {};
 
 bookcontroller.createBook = async (req, res, next) => {
     // console.log('inside cb', req.body);
-    const body = req.body;
-    // const { authors, title, thumbnail } = req.body
+    let { authors, title, thumbnail } = req.body
     // console.log(authors, title, thumbnail);
-
+    //change http thumbnail to https thumbnail
+    thumbnail = thumbnail.slice(0, 4) + 's' + thumbnail.slice(4)
     try {
-        const result = await Library.create(body);
+        const result = await Library.create({ authors, title, thumbnail });
         // console.log(body);
         res.locals.book = result;
        return next();
