@@ -1,13 +1,13 @@
 
-import React, { useEffect, useState }  from 'react';
+import React, { useEffect, useState } from 'react';
+
+
 
 
 const BookCreator = ({newBookSet, deleteAllSet, deleteAll}) => {
     const [book, setBook] = useState('');
     const [inputState, setInputState] = useState('');
     const SendData = (object) => {
-        // console.log('THE OBJECT', object);
-        // const newBody = JSON.stringify({thisString: 2});
         fetch('/addBook', {
             method: 'POST',
             headers: {
